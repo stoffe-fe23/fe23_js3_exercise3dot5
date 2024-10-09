@@ -58,7 +58,7 @@ h1 {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: stretch;
   gap: 1rem;
   margin: 0;
@@ -145,5 +145,23 @@ h1 {
 #sort-by {
   padding: 0.5rem 1rem;
   border-radius: 12px;
+  border: 0;
+}
+
+.todo-filterdone-box {
+  background-color: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+}
+
+.todo-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+dialog {
   border: 0;
 }

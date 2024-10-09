@@ -7,7 +7,7 @@ function TodoList({ todoList, setTodoStatus, deleteTodoNote, showEditForm, sortT
     function sortTodoNotes(a, b) {
         switch (sortTodosBy.type) {
             case "order": return (sortTodosBy.direction == "asc" ? a.order - b.order : b.order - a.order);
-            case "title": return (sortTodosBy.direction == "asc" ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title));
+            case "title": return (sortTodosBy.direction == "asc" ? a.title.localeCompare(b.title, 'sv-SE') : b.title.localeCompare(a.title, 'sv-SE'));
             case "date": return (sortTodosBy.direction == "asc" ? a.date - b.date : b.date - a.date);
         }
         return a.order - b.order;

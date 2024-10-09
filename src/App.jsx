@@ -12,6 +12,7 @@ function App() {
     // Handle the edit form
     const [editTodo, setEditTodo] = useState({ id: 0, title: "", text: "" });
     const editDialogRef = useRef(null);
+    const newDialogRef = useRef(null);
 
     // State keeping track of todo notes. Load default from local storage.
     const [todoItems, setTodoItems] = useState(() => {
@@ -55,6 +56,9 @@ function App() {
         setTodoItems((currentTodoItems) => {
             return [...currentTodoItems, { id: crypto.randomUUID(), title, text, date: Date.now(), status: "todo", order: currentTodoItems.length }];
         });
+        if (newDialogRef && newDialogRef.current) {
+            newDialogRef.current.close();
+        }
     }
 
     // Change the status of an existing todo note. 
@@ -109,8 +113,14 @@ function App() {
         setSortTodosBy({ type, direction });
     }
 
+    // Event handler for toggling the Visa avklarade checkbox.
     function onToggleShowCompleted(evt) {
         setShowDoneTodos((isShowingDone) => !isShowingDone);
+    }
+
+    // Event handler of the Ny lapp button to show the form dialog.
+    function onNewTodoClick(evt) {
+        newDialogRef.current.showModal();
     }
 
 
@@ -120,13 +130,16 @@ function App() {
     return (
         <div className="todo-list-box">
             <h1 className="header">Att göra:</h1>
-            <SortingSelector sortTodosBy={sortTodosBy} onChangeSort={onChangeSort} />
-            <div>
-                <input type="checkbox" id="todo-filtercomplete" onChange={onToggleShowCompleted} checked={showDoneTodos} />
-                <label htmlFor="todo-filtercomplete">Visa avklarade lappar</label>
+            <div className="todo-settings">
+                <SortingSelector sortTodosBy={sortTodosBy} onChangeSort={onChangeSort} />
+                <div className="todo-filterdone-box">
+                    <input type="checkbox" id="todo-filtercomplete" onChange={onToggleShowCompleted} checked={showDoneTodos} />
+                    <label htmlFor="todo-filtercomplete">Visa avklarade lappar</label>
+                </div>
+                <button id="todo-new-todo" onClick={onNewTodoClick}>Ny lapp</button>
             </div>
             <TodoList todoList={todoItems} setTodoStatus={setTodoStatus} deleteTodoNote={deleteTodoNote} showEditForm={showEditForm} sortTodosBy={sortTodosBy} showDoneTodos={showDoneTodos} />
-            <NewTodoForm addTodoNote={addTodoNote} />
+            <dialog ref={newDialogRef}><NewTodoForm addTodoNote={addTodoNote} /></dialog>
             <dialog ref={editDialogRef}><EditTodoForm {...editTodo} editTodoNote={editTodoNote} /></dialog>
         </div>
     );
