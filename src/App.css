@@ -1,0 +1,149 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+h1 {
+  margin: 0;
+}
+
+.edit-todo-form,
+.new-todo-form {
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 300px;
+}
+
+.new-todo-form {
+  border-radius: 12px;
+}
+
+.edit-todo-form label,
+.new-todo-form label {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.edit-todo-form textarea,
+.new-todo-form textarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+.edit-todo-form input,
+.edit-todo-form textarea,
+.new-todo-form input,
+.new-todo-form textarea {
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 0;
+}
+
+.todo-list-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-list-item {
+  position: relative;
+  list-style-type: none;
+  width: 250px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+
+}
+
+.todo-list-item label {
+  padding: 0;
+  margin: 0;
+}
+
+.todo-list-item input[type="checkbox"] {
+  width: 75px;
+  height: 75px;
+}
+
+.todo-list-item h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.todo-list-item.todo-done {
+  outline: 5px solid green;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.todo-date {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.todo-list-item .btn {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.todo-list-item .btn-delete {
+  color: white;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list-item .btn-delete:hover {
+  background-color: rgba(139, 0, 0, 0.75);
+  border: 0;
+}
+
+.todo-list-item .btn-edit {
+  color: white;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list-item .btn-edit:hover {
+  background-color: rgba(0, 0, 139, 0.75);
+  border: 0;
+}
+
+#sort-by {
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border: 0;
+}
